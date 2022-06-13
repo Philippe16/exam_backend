@@ -1,5 +1,6 @@
 package facades;
 
+import dtos.GuestDTO;
 import dtos.Show1DTO;
 import entities.Guest;
 import entities.Role;
@@ -111,6 +112,21 @@ class UserFacadeTest {
 
         assertEquals(3, assignedShows.size());
 
+    }
+
+    @Test
+    public void testAddShows(){
+        EntityManager em = emf.createEntityManager();
+        User userFromDB = em.find(User.class, "Fjolle");
+        userFromDB.getGuest().setShow1s(new ArrayList<>());
+        em.merge(userFromDB);
+        userFromDB = em.find(User.class, "Fjolle");
+        UserFacade userFacade = UserFacade.getUserFacade(emf);
+        List<Show1DTO> availableShows = userFacade.getAllAvailableShows();
+        userFacade.addShow(1,"Fjolle" );
+
+
+        assertEquals(1, userFromDB.getGuest().getShow1s().size());
     }
 
 

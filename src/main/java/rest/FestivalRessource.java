@@ -33,7 +33,7 @@ public class FestivalRessource {
 
 
     @GET
-    @Path("AvaiableShows")
+    @Path("AvailableShows")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response avaiableShows(String jsonContext) {
@@ -51,14 +51,13 @@ public class FestivalRessource {
     }
 
     @GET
-    @Path("AssignedShows")
+    @Path("AssignedShows/{username}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response assignedShows(String jsonContext) {
+    public Response assignedShows(String jsonContext, @PathParam("username") String username) {
         EntityManager em = EMF.createEntityManager();
         UserFacade userFacade = UserFacade.getUserFacade(EMF);
-        UserDTO userDTOFromClient = GSON.fromJson(jsonContext, UserDTO.class);
-        User user = em.find(User.class, userDTOFromClient.getUserName());
+        User user = em.find(User.class, username);
         List<Show1DTO> shows = userFacade.getAllAssignedShows(user);
         Response response = null;
         if (shows != null) {
