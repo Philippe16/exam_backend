@@ -1,8 +1,8 @@
 package entities;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "guest")
@@ -29,6 +29,19 @@ public class Guest {
     @Basic(optional = false)
     @Column(name = "status", nullable = false)
     private String status;
+
+
+    @ManyToMany
+    @JoinTable(name = "guests_shows", joinColumns = {
+            @JoinColumn(name = "fk_guest_id", referencedColumnName = "guest_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "fk_show_id", referencedColumnName = "show_id")}
+    )
+    private List<Show> shows = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "fk_festival_id", nullable = false)
+    private Festival festival;
+
 
     public Guest() {
     }

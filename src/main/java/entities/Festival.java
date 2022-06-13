@@ -1,8 +1,12 @@
 package entities;
 
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "festival")
@@ -22,19 +26,24 @@ public class Festival {
     @Column(name = "city", nullable = false)
     private String city;
 
+
     @Basic(optional = false)
     @Column(name = "startDate", nullable = false)
     private LocalDate startDate;
 
+
     @Basic(optional = false)
     @Column(name = "duration", nullable = false)
-    private LocalTime duration;
+    private int duration;
+
+    @OneToMany(mappedBy="festival")
+    private List<Guest> guest = new ArrayList<>();
 
 
     public Festival() {
     }
 
-    public Festival(String name, String city, LocalDate startDate, LocalTime duration) {
+    public Festival(String name, String city, LocalDate startDate, int duration) {
         this.name = name;
         this.city = city;
         this.startDate = startDate;
@@ -69,11 +78,11 @@ public class Festival {
         this.startDate = startDate;
     }
 
-    public LocalTime getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(LocalTime duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 }

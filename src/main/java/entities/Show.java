@@ -3,13 +3,9 @@ package entities;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name = "show")
 public class Show {
-
 
     @Id
     @Basic(optional = false)
@@ -20,6 +16,7 @@ public class Show {
     @Basic(optional = false)
     @Column(name = "name", nullable = false)
     private String name;
+
 
     @Basic(optional = false)
     @Column(name = "duration", nullable = false)
@@ -36,6 +33,7 @@ public class Show {
     @Basic(optional = false)
     @Column(name = "startTime", nullable = false)
     private LocalTime startTime;
+
 
     public Show() {
     }
