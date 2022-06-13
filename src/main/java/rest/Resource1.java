@@ -26,23 +26,7 @@ public class Resource1 {
         return "Hello, World!";
     }
 
-    @GET
-    @Path("/availableshows")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response avaiableShows(String jsonContext) {
-        UserFacade userFacade = UserFacade.getUserFacade(EMF);
-        List<Show1DTO> shows = userFacade.getAllAvailableShows();
-        Response response = null;
-        if (shows != null) {
-            response = Response
-                    .status(200)
-                    .entity(GSON.toJson(shows))
-                    .build();
-
-        }
-        return response;
-    }
+   
 
 }
 
