@@ -37,6 +37,14 @@ public class GuestDTO {
 
     }
 
+    public List<Show1DTO> getShow1s() {
+        return show1s;
+    }
+
+    public void setShow1s(List<Show1DTO> show1s) {
+        this.show1s = show1s;
+    }
+
     public int getGuestID() {
         return guestID;
     }

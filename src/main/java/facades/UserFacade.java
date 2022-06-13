@@ -1,8 +1,10 @@
 package facades;
 
+import dtos.GuestDTO;
 import dtos.RoleDTO;
 import dtos.Show1DTO;
 import dtos.UserDTO;
+import entities.Guest;
 import entities.Role;
 import entities.Show1;
 import entities.User;
@@ -16,6 +18,7 @@ import security.errorhandling.AuthenticationException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @author lam@cphbusiness.dk
@@ -123,6 +126,23 @@ public class UserFacade {
                     assignedShows.add(new Show1DTO(show));
               }
             return assignedShows;
+
+    }
+
+    public void addShow(Show1DTO show, GuestDTO guestDTO){
+        EntityManager em = emf.createEntityManager();
+        guestDTO.getShow1s().add(show);
+
+        Guest guest = em.find(Guest.class, guestDTO.getGuestID());
+        guest.addShow(new Show1(show.getName(), show.getDuration(), show.getLocation(), show.getStartDate(), show.getStartTime()));
+
+
+        try {
+        em.merge(guest);
+
+        }finally {
+            em.close();
+        }
 
     }
 

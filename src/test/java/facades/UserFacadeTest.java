@@ -93,25 +93,25 @@ class UserFacadeTest {
 
     @Test
     public void testAvaiableShows(){ // Testing all available shows for a user (US1)
-//        UserFacade userFacade = UserFacade.getUserFacade(emf);
-//
-//        List<Show1DTO> availableShows = userFacade.getAllAvailableShows();
-//
-//        assertEquals(1, availableShows.size());
+       UserFacade userFacade = UserFacade.getUserFacade(emf);
+
+        List<Show1DTO> availableShows = userFacade.getAllAvailableShows();
+
+        assertEquals(1, availableShows.size());
 
 
     }
 
-//    @Test
-//    public void testAssignedShows(){ // Testing all assigned shows for a user (US2)
-//
-//        UserFacade userFacade = UserFacade.getUserFacade(emf);
-//
-//        List<Show1DTO> assignedShows = userFacade.getAllAssignedShows(user);
-//
-//        assertEquals(3, assignedShows.size());
-//
-//    }
+    @Test
+    public void testAssignedShows(){ // Testing all assigned shows for a user (US2)
+
+        UserFacade userFacade = UserFacade.getUserFacade(emf);
+
+        List<Show1DTO> assignedShows = userFacade.getAllAssignedShows(user);
+
+        assertEquals(3, assignedShows.size());
+
+    }
 
 
 }
