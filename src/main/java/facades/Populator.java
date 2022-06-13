@@ -12,15 +12,7 @@ import utils.EMF_Creator;
 public class Populator {
     public static void populate(){
         EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
-        UserFacade uf = UserFacade.getUserFacade(emf);
-        RoleFacade rf = RoleFacade.getRoleFacade(emf);
 
-        // Throws an error if you run more than once without changing the userName
-        // This is due the fact that we have a unique constraint (as we should) on the userName
-        User user = new User("Henning", "terces");
-
-        user.addRole(rf.getRole("admin"));
-        uf.create(user);
     }
 
 
