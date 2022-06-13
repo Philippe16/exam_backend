@@ -1,14 +1,21 @@
 package facades;
 
 import dtos.RoleDTO;
+import dtos.Show1DTO;
 import dtos.UserDTO;
 import entities.Role;
+import entities.Show1;
 import entities.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 
 import org.mindrot.jbcrypt.BCrypt;
 import security.errorhandling.AuthenticationException;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author lam@cphbusiness.dk
@@ -77,5 +84,34 @@ public class UserFacade {
 
         return user;
     }
+
+    public List<Show1DTO> getAllAvailableShows(){
+        EntityManager em = emf.createEntityManager();
+
+        List<Show1> shows = new ArrayList<>();
+        List<Show1DTO> availableShows = new ArrayList<>();
+
+        try {
+            TypedQuery<Show1> query = em.createQuery(
+                    "SELECT show1 FROM Show1 AS show1", Show1.class
+            );
+
+            shows = query.getResultList();
+            for (Show1 show: shows) {
+                boolean isAfter = show.getStartDate().isAfter(LocalDate.now());
+                if (isAfter){
+                    availableShows.add(new Show1DTO(show));
+                }
+
+
+            }
+        }finally {
+            em.close();
+        }
+
+        return availableShows;
+    }
+
+    public List<Show1DTO> 
 
 }
