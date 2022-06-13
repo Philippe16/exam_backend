@@ -10,10 +10,12 @@ public class UserDTO {
     private String userName;
     private String userPass;
     private List<RoleDTO> roleList = new ArrayList<>();
+    private GuestDTO guest;
 
     public UserDTO(User user) {
         this.userName = user.getUserName();
         this.userPass = user.getUserPass();
+        this.guest = new GuestDTO(user.getGuest());
 
         for (Role role : user.getRoleList()) {
             roleList.add(new RoleDTO(role));

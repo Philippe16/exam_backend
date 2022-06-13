@@ -90,4 +90,28 @@ public class Guest {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public List<Show1> getShow1s() {
+        return show1s;
+    }
+
+    public void setShow1s(List<Show1> show1s) {
+        this.show1s = show1s;
+    }
+
+    public Festival getFestival() {
+        return festival;
+    }
+
+    public void setFestival(Festival festival) {
+        this.festival = festival;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

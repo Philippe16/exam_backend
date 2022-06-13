@@ -85,4 +85,12 @@ public class Festival {
     public void setDuration(int duration) {
         this.duration = duration;
     }
+
+    public List<Guest> getGuest() {
+        return guest;
+    }
+
+    public void setGuest(List<Guest> guest) {
+        this.guest = guest;
+    }
 }
