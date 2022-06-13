@@ -25,7 +25,7 @@ public class FestivalRessource {
     // Facades
     private static final UserFacade userFacade = UserFacade.getUserFacade(EMF);
     @GET
-    @Path("/hello")
+    @Path("hello")
     @Produces("text/plain")
     public String hello() {
         return "Hello, World!";
