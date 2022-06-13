@@ -30,20 +30,29 @@ public class Guest {
     @Column(name = "status", nullable = false)
     private String status;
 
-
     @ManyToMany
     @JoinTable(name = "guests_shows", joinColumns = {
             @JoinColumn(name = "fk_guest_id", referencedColumnName = "guest_id")}, inverseJoinColumns = {
             @JoinColumn(name = "fk_show_id", referencedColumnName = "show_id")}
     )
-    private List<Show> shows = new ArrayList<>();
+    private List<Show1> show1s = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "fk_festival_id", nullable = false)
+    @JoinColumn(name = "fk_festival_id", nullable = true)
     private Festival festival;
 
+    @OneToOne(mappedBy = "guest")
+    private User user;
 
     public Guest() {
+    }
+
+    public Guest(String name, String phone, String email, String status) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.status = status;
+
     }
 
     public int getGuestID() {

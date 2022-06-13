@@ -5,7 +5,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-public class Show {
+@Table(name = "shows")
+public class Show1 {
 
     @Id
     @Basic(optional = false)
@@ -35,10 +36,10 @@ public class Show {
     private LocalTime startTime;
 
 
-    public Show() {
+    public Show1() {
     }
 
-    public Show(String name, int duration, String location, LocalDate startDate, LocalTime startTime) {
+    public Show1(String name, int duration, String location, LocalDate startDate, LocalTime startTime) {
         this.name = name;
         this.duration = duration;
         this.location = location;

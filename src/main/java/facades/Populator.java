@@ -5,10 +5,14 @@
  */
 package facades;
 
-import entities.Show;
+import entities.Guest;
+import entities.Role;
+import entities.Show1;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+
+import entities.User;
 import utils.EMF_Creator;
 
 import java.text.DateFormat;
@@ -25,11 +29,16 @@ public class Populator {
         EntityManager em = emf.createEntityManager();
         LocalDate date = LocalDate.of(2012,12, 7);
         LocalTime time = LocalTime.of(12,45);
-        Show show = new Show("fffff", 333, "ffffff", date, time);
+        Show1 show1 = new Show1("fffff", 333, "ffffff", date, time);
+
+        Role role = new Role("user");
+        Guest guest = new Guest("Mads", "12121212","mads@test.dk", "Ledig");
+        User user = new User("Seje", "krøllebølle", role, guest );
 
         try{
             em.getTransaction().begin();
-            em.persist(show);
+            em.persist(guest);
+            em.persist(user);
             em.getTransaction().commit();
         }finally {
             em.close();

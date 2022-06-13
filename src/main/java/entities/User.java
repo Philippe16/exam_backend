@@ -3,14 +3,7 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.mindrot.jbcrypt.BCrypt;
@@ -36,6 +29,10 @@ public class User implements Serializable {
   @ManyToMany
   private List<Role> roleList = new ArrayList<>();
 
+  @OneToOne
+  @JoinColumn(name = "fk_guest_id", referencedColumnName = "guest_id")
+  private Guest guest;
+
   public List<String> getRolesAsStrings() {
     if (roleList.isEmpty()) {
       return null;
@@ -53,9 +50,11 @@ public class User implements Serializable {
     return(BCrypt.checkpw(pw, userPass));
   }
 
-  public User(String userName, String userPass) {
+  public User(String userName, String userPass, Role role, Guest guest) {
     this.userName = userName;
     this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
+    this.roleList.add(role);
+    this.guest = guest;
   }
 
 
@@ -87,4 +86,11 @@ public class User implements Serializable {
     roleList.add(userRole);
   }
 
+  public Guest getGuest() {
+    return guest;
+  }
+
+  public void setGuest(Guest guest) {
+    this.guest = guest;
+  }
 }
