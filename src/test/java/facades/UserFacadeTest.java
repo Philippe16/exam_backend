@@ -37,10 +37,10 @@ class UserFacadeTest {
     private void resetDB(EntityManager em){
         em.getTransaction().begin();
 
-        em.createQuery("DELETE FROM Show1 ").executeUpdate();
-        em.createQuery("DELETE FROM Guest ").executeUpdate();
         em.createQuery("DELETE FROM User ").executeUpdate();
+        em.createQuery("DELETE FROM Guest ").executeUpdate();
         em.createQuery("DELETE FROM Role ").executeUpdate();
+        em.createQuery("DELETE FROM Show1 ").executeUpdate();
 
         em.createNativeQuery("ALTER TABLE shows AUTO_INCREMENT = 1").executeUpdate();
         em.createNativeQuery("ALTER TABLE guest AUTO_INCREMENT = 1").executeUpdate();

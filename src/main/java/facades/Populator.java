@@ -37,6 +37,7 @@ public class Populator {
 
         try{
             em.getTransaction().begin();
+            em.persist(role);
             em.persist(guest);
             em.persist(user);
             em.getTransaction().commit();

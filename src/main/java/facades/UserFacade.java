@@ -120,7 +120,7 @@ public class UserFacade {
 
         List<Show1> shows = new ArrayList<>();
         List<Show1DTO> assignedShows = new ArrayList<>();
-        User user1 = em.find(User.class, user);
+        User user1 = em.find(User.class, user.getUserName());
         shows = user1.getGuest().getShow1s();
             for (Show1 show: shows) {
                     assignedShows.add(new Show1DTO(show));

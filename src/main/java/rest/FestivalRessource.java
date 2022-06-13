@@ -79,7 +79,7 @@ public class FestivalRessource {
         EntityManager em = EMF.createEntityManager();
         UserFacade userFacade = UserFacade.getUserFacade(EMF);
         UserDTO userDTOFromClient = GSON.fromJson(jsonContext, UserDTO.class);
-        Show1DTO show1DTOFromClient = GSON.fromJson(jsonContext, Show1DTO.class)
+        Show1DTO show1DTOFromClient = GSON.fromJson(jsonContext, Show1DTO.class);
         User user = em.find(User.class, userDTOFromClient.getUserName());
         Show1 show = em.find(Show1.class, show1DTOFromClient.getShowID());
         user.getGuest().addShow(show);
