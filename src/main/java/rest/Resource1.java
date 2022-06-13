@@ -14,11 +14,6 @@ import java.util.List;
 
 @Path("/hello-world")
 public class Resource1 {
-    private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-
-    // Facades
-    private static final UserFacade userFacade = UserFacade.getUserFacade(EMF);
 
     @GET
     @Produces("text/plain")

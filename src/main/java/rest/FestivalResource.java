@@ -55,7 +55,7 @@ public class FestivalResource {
     }
 
     @GET
-    @Path("/assignedShows/{username}")
+    @Path("/assignedshows/{username}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response assignedShows(String jsonContext, @PathParam("username") String username) {
