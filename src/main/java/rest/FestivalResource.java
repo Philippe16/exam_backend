@@ -35,72 +35,72 @@ public class FestivalResource {
 
 
 
-//
-//    @GET
-//    @Path("/availableshows")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response avaiableShows(String jsonContext) {
-//        UserFacade userFacade = UserFacade.getUserFacade(EMF);
-//        List<Show1DTO> shows = userFacade.getAllAvailableShows();
-//        Response response = null;
-//        if (shows != null) {
-//            response = Response
-//                    .status(200)
-//                    .entity(GSON.toJson(shows))
-//                    .build();
-//
-//        }
-//        return response;
-//    }
-//
-//    @GET
-//    @Path("/assignedShows/{username}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response assignedShows(String jsonContext, @PathParam("username") String username) {
-//        EntityManager em = EMF.createEntityManager();
-//        UserFacade userFacade = UserFacade.getUserFacade(EMF);
-//        User user = em.find(User.class, username);
-//        List<Show1DTO> shows = userFacade.getAllAssignedShows(user);
-//        Response response = null;
-//        if (shows != null) {
-//            response = Response
-//                    .status(200)
-//                    .entity(GSON.toJson(shows))
-//                    .build();
-//
-//        }
-//        return response;
-//    }
-//
-//    @PUT
-//    @Path("/addshows")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response addShows(String jsonContext) {
-//        EntityManager em = EMF.createEntityManager();
-//        UserFacade userFacade = UserFacade.getUserFacade(EMF);
-//        UserDTO userDTOFromClient = GSON.fromJson(jsonContext, UserDTO.class);
-//        Show1DTO show1DTOFromClient = GSON.fromJson(jsonContext, Show1DTO.class);
-//        User user = em.find(User.class, userDTOFromClient.getUserName());
-//        Show1 show = em.find(Show1.class, show1DTOFromClient.getShowID());
-//        user.getGuest().addShow(show);
-//
-//        em.merge(user);
-//
-//        Response response = null;
-//        response = Response
-//                .status(200)
-//                .entity(GSON.toJson("SUCCESS"))
-//                .build();
-//
-//
-//        return response;
-//    }
-//
-//
-//
-//
+
+    @GET
+    @Path("/availableshows")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response avaiableShows(String jsonContext) {
+        UserFacade userFacade = UserFacade.getUserFacade(EMF);
+        List<Show1DTO> shows = userFacade.getAllAvailableShows();
+        Response response = null;
+        if (shows != null) {
+            response = Response
+                    .status(200)
+                    .entity(GSON.toJson(shows))
+                    .build();
+
+        }
+        return response;
+    }
+
+    @GET
+    @Path("/assignedShows/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response assignedShows(String jsonContext, @PathParam("username") String username) {
+        EntityManager em = EMF.createEntityManager();
+        UserFacade userFacade = UserFacade.getUserFacade(EMF);
+        User user = em.find(User.class, username);
+        List<Show1DTO> shows = userFacade.getAllAssignedShows(user);
+        Response response = null;
+        if (shows != null) {
+            response = Response
+                    .status(200)
+                    .entity(GSON.toJson(shows))
+                    .build();
+
+        }
+        return response;
+    }
+
+    @PUT
+    @Path("/addshows")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addShows(String jsonContext) {
+        EntityManager em = EMF.createEntityManager();
+        UserFacade userFacade = UserFacade.getUserFacade(EMF);
+        UserDTO userDTOFromClient = GSON.fromJson(jsonContext, UserDTO.class);
+        Show1DTO show1DTOFromClient = GSON.fromJson(jsonContext, Show1DTO.class);
+        User user = em.find(User.class, userDTOFromClient.getUserName());
+        Show1 show = em.find(Show1.class, show1DTOFromClient.getShowID());
+        user.getGuest().addShow(show);
+
+        em.merge(user);
+
+        Response response = null;
+        response = Response
+                .status(200)
+                .entity(GSON.toJson("SUCCESS"))
+                .build();
+
+
+        return response;
+    }
+
+
+
+
 }
 
