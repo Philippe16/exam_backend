@@ -132,12 +132,13 @@ public class UserFacade {
     public void addShow(int showID, String username){
         EntityManager em = emf.createEntityManager();
         Show1 show1FromDB = em.find(Show1.class, showID);
+        System.out.println(show1FromDB.getName());
         User userFromDB = em.find(User.class, username);
 
-        userFromDB.getGuest().getShow1s().add(show1FromDB);
 
+        userFromDB.getGuest().getShow1s().add(show1FromDB);
         try {
-        em.merge(userFromDB.getGuest());
+        em.merge(userFromDB);
 
         }finally {
             em.close();

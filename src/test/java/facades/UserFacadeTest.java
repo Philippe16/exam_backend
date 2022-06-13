@@ -26,6 +26,7 @@ class UserFacadeTest {
     private static UserFacade quizFacade = UserFacade.getUserFacade(emf);
 
     User user;
+    Show1 show4;
 
     LocalDate date = LocalDate.of(2012,12, 7);
     LocalTime time = LocalTime.of(12,45);
@@ -64,6 +65,7 @@ class UserFacadeTest {
         Show1 show1 = new Show1("Scary", 2, "FestivalsVej",date, time );
         Show1 show2 = new Show1("Funny", 4, "FunnyBunnyVej", date2,time2);
         Show1 show3 = new Show1("Dumb", 1, "HoldDaHeltOpVej", date3,time3);
+        show4 = new Show1("Hello", 4, "Moviestar", date3,time3);
 
         user.getGuest().addShow(show1);
         user.getGuest().addShow(show2);
@@ -117,16 +119,31 @@ class UserFacadeTest {
     @Test
     public void testAddShows(){
         EntityManager em = emf.createEntityManager();
+
+
+        try{
+            em.getTransaction().begin();
+            em.persist(show4);
+            em.getTransaction().commit();
+            System.out.println(em.find(Show1.class, 4).getName());
+        }finally {
+
+        }
+
         User userFromDB = em.find(User.class, "Fjolle");
-        userFromDB.getGuest().setShow1s(new ArrayList<>());
-        em.merge(userFromDB);
-        userFromDB = em.find(User.class, "Fjolle");
+        for (Show1 show1: em.find(User.class, "Fjolle").getGuest().getShow1s()) {
+            System.out.println(show1.getName());
+
+        }
+        System.out.println("------------------");
         UserFacade userFacade = UserFacade.getUserFacade(emf);
-        List<Show1DTO> availableShows = userFacade.getAllAvailableShows();
-        userFacade.addShow(1,"Fjolle" );
+        userFacade.addShow(3,"Fjolle" );
+        for (Show1 show1: em.find(User.class, "Fjolle").getGuest().getShow1s()) {
+            System.out.println(show1.getName());
 
+        }
 
-        assertEquals(1, userFromDB.getGuest().getShow1s().size());
+        assertEquals(3, em.find(User.class, "Fjolle").getGuest().getShow1s().size());
     }
 
 
