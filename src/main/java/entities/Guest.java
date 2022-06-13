@@ -55,6 +55,10 @@ public class Guest {
 
     }
 
+    public void addShow(Show1 show1){
+        show1s.add(show1);
+    }
+
     public int getGuestID() {
         return guestID;
     }

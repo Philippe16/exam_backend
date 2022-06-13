@@ -112,6 +112,18 @@ public class UserFacade {
         return availableShows;
     }
 
-    public List<Show1DTO> 
+    public List<Show1DTO> getAllAssignedShows(User user){
+        EntityManager em = emf.createEntityManager();
+
+        List<Show1> shows = new ArrayList<>();
+        List<Show1DTO> assignedShows = new ArrayList<>();
+        User user1 = em.find(User.class, user);
+        shows = user1.getGuest().getShow1s();
+            for (Show1 show: shows) {
+                    assignedShows.add(new Show1DTO(show));
+              }
+            return assignedShows;
+
+    }
 
 }
