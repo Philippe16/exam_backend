@@ -9,6 +9,7 @@
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/security/UserPrincipal.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/entities/User.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/facades/AdminFacade.java
+/Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/rest/Resource1.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/security/JWTAuthenticationFilter.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/security/SharedSecret.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/dtos/FestivalDTO.java
@@ -20,7 +21,7 @@
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/dtos/GuestDTO.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/rest/ApplicationConfig.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/cors/CorsFilter.java
-/Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/rest/FestivalRessource.java
+/Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/rest/FestivalResource.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/security/errorhandling/AuthenticationExceptionMapper.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/utils/EMF_Creator.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/dtos/UserDTO.java

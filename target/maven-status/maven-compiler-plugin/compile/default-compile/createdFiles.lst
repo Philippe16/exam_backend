@@ -2,6 +2,7 @@ entities/Show1.class
 errorhandling/GenericExceptionMapper.class
 utils/EMF_Creator.class
 security/SharedSecret.class
+rest/FestivalResource.class
 security/UserPrincipal.class
 security/errorhandling/AuthenticationExceptionMapper.class
 dtos/FestivalDTO.class
@@ -17,8 +18,8 @@ rest/ApplicationConfig.class
 security/RolesAllowedFilter.class
 errorhandling/ExceptionDTO.class
 errorhandling/API_Exception.class
-rest/FestivalRessource.class
 dtos/RoleDTO.class
+rest/Resource1.class
 security/errorhandling/AuthenticationException.class
 cors/CorsFilter.class
 entities/Festival.class

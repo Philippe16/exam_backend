@@ -26,7 +26,7 @@ public class Resource1 {
         return "Hello, World!";
     }
 
-   
+
 
 }
 
