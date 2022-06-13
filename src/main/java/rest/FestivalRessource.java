@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("/MovieFestival")
+@Path("/moviefestival")
 public class FestivalRessource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
@@ -24,12 +24,14 @@ public class FestivalRessource {
 
     // Facades
     private static final UserFacade userFacade = UserFacade.getUserFacade(EMF);
+
+
     @GET
-    @Path("hello")
     @Produces("text/plain")
     public String hello() {
         return "Hello, World!";
     }
+
 
 
 
@@ -87,10 +89,10 @@ public class FestivalRessource {
         em.merge(user);
 
         Response response = null;
-            response = Response
-                    .status(200)
-                    .entity(GSON.toJson("SUCCESS"))
-                    .build();
+        response = Response
+                .status(200)
+                .entity(GSON.toJson("SUCCESS"))
+                .build();
 
 
         return response;
@@ -100,3 +102,4 @@ public class FestivalRessource {
 
 
 }
+
