@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dtos.Show1DTO;
 import dtos.UserDTO;
+import dtos.Username_movieIDDTO;
 import entities.Show1;
 import entities.User;
 import facades.UserFacade;
@@ -40,7 +41,7 @@ public class FestivalResource {
     @Path("/availableshows")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response avaiableShows(String jsonContext) {
+    public Response availableShows(String jsonContext) {
         UserFacade userFacade = UserFacade.getUserFacade(EMF);
         List<Show1DTO> shows = userFacade.getAllAvailableShows();
         Response response = null;
@@ -79,15 +80,12 @@ public class FestivalResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addShows(String jsonContext) {
+        Username_movieIDDTO unDTO = GSON.fromJson(jsonContext, Username_movieIDDTO.class);
         EntityManager em = EMF.createEntityManager();
         UserFacade userFacade = UserFacade.getUserFacade(EMF);
-        UserDTO userDTOFromClient = GSON.fromJson(jsonContext, UserDTO.class);
-        Show1DTO show1DTOFromClient = GSON.fromJson(jsonContext, Show1DTO.class);
-        User user = em.find(User.class, userDTOFromClient.getUserName());
-        Show1 show = em.find(Show1.class, show1DTOFromClient.getShowID());
-        user.getGuest().addShow(show);
-
-        em.merge(user);
+//        User user = em.find(User.class, unDTO.getUsername());
+//        Show1 show = em.find(Show1.class, unDTO.getMovieID());
+        userFacade.addShow(unDTO.getMovieID(), unDTO.getUsername());
 
         Response response = null;
         response = Response
