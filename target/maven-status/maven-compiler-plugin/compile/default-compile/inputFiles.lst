@@ -8,6 +8,7 @@
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/security/JWTSecurityContext.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/security/UserPrincipal.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/entities/User.java
+/Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/dtos/Username_movieIDDTO.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/facades/AdminFacade.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/rest/Resource1.java
 /Users/philippesuenson/Documents/Exam 24timers/exam_backend/src/main/java/security/JWTAuthenticationFilter.java

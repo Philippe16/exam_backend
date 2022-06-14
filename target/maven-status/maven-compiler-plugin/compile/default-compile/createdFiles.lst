@@ -4,6 +4,7 @@ utils/EMF_Creator.class
 security/SharedSecret.class
 rest/FestivalResource.class
 security/UserPrincipal.class
+dtos/Username_movieIDDTO.class
 security/errorhandling/AuthenticationExceptionMapper.class
 dtos/FestivalDTO.class
 facades/Populator.class
